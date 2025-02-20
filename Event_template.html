@@ -6,93 +6,71 @@
     <title>The Cipher Chase - Kalam 2k25</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://www.google.com/favicon.ico">
     <style>
+        /* Static Gradient Background */
         .gradient-bg {
-            background: linear-gradient(90deg, #2d01bf 0%, #CB6CE6 100%);
+            background: linear-gradient(90deg, #2d116d, #9a28b9);
         }
-        body {
-            font-family: 'Quantico', sans-serif;
-            animation: fadeIn 1.5s ease-in-out;
+        
+        /* Fade In Up Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .fadeInUp { animation: fadeInUp 1.5s ease-in-out; }
+        
+        /* Zoom In Animation */
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 2rem;
-        }
-        .image-container {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            height: 350px;
-            overflow: hidden;
-            border-radius: 10px;
-            animation: fadeIn 1.5s ease-in-out;
-            background: linear-gradient(to top, rgba(45, 1, 191, 0.8), rgba(203, 108, 230, 0.6)), url("event.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-        .image-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: bold;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        .event-details {
-            animation: fadeIn 2s ease-in-out;
-        }
-        .event-description {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
+        .zoomIn { animation: zoomIn 1.5s ease-in-out; }
+        
+        /* Text Hover Glow */
+        .glow:hover { text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); }
+        
+        /* Image Hover Effect */
+        .image-container img:hover { transform: scale(1.05); transition: transform 0.3s ease-in-out; }
     </style>
 </head>
 <body class="gradient-bg text-white flex items-center justify-center min-h-screen p-6">
     <div class="container flex flex-col md:flex-row items-center gap-12">
         <!-- Event Poster with Overlay -->
-        <div class="md:w-5/12 w-full flex justify-center">
-            <div class="image-container">
-                <div class="image-overlay">Unleash your inner cryptographer! Solve puzzles, crack codes, and race against time in this thrilling challenge.</div>
+        <div class="md:w-5/12 w-full flex justify-center zoomIn">
+            <div class="relative w-full max-w-[400px] sm:max-w-[500px] rounded-lg overflow-hidden">
+                <img src="event.jpg" alt="Event Poster" class="w-full h-auto rounded-lg object-cover shadow-lg">
+                <div class="absolute bottom-0 left-0 w-full text-center text-white font-bold p-3 bg-black bg-opacity-50">
+                    Unleash your inner cryptographer! Solve puzzles, crack codes, and race against time in this thrilling challenge.
+                </div>
             </div>
         </div>
         
         <!-- Event Description -->
-        <div class="md:w-7/12 w-full text-white text-left event-details">
-            <h1 class="text-5xl font-bold text-center md:text-left">The Cipher Chase</h1>
-            <h2 class="text-2xl mt-2 text-center md:text-left">Kalam 2k25</h2>
-            <div class="event-description mt-6">
-                <h2 class="text-3xl font-bold text-center md:text-left">How It Works</h2>
-                <ul class="list-none mt-4 text-lg leading-relaxed space-y-5">
+        <div class="md:w-7/12 w-full text-left fadeInUp mt-6 md:mt-0">
+            <h1 class="text-5xl font-bold text-center md:text-left glow">The Cipher Chase</h1>
+            <h2 class="text-2xl mt-2 text-center md:text-left glow">Kalam 2k25</h2>
+            <div class="event-description bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-xl shadow-lg mt-6">
+                <h2 class="text-3xl font-bold text-center md:text-left glow">How It Works</h2>
+                <ul class="mt-4 text-lg leading-relaxed space-y-5">
                     <li>
-                        <h3 class='text-yellow-300 font-bold'>LEVEL-1: Debugging</h3>
+                        <h3 class='text-yellow-300 font-bold glow'>LEVEL-1: Debugging</h3>
                         <p>Fix three debugging challenges to unlock a hidden Morse code. Decrypt it to advance to the next level.</p>
                     </li>
                     <li>
-                        <h3 class='text-yellow-300 font-bold'>LEVEL-2: Race the Clock</h3>
+                        <h3 class='text-yellow-300 font-bold glow'>LEVEL-2: Race the Clock</h3>
                         <p>Code in <span class='text-blue-400'>C, Java, Python, or C++</span>, but beware—there’s a unique time twist! Solve fast to get the next key.</p>
                     </li>
                     <li>
-                        <h3 class='text-yellow-300 font-bold'>LEVEL-3: Friend or Foe?</h3>
+                        <h3 class='text-yellow-300 font-bold glow'>LEVEL-3: Friend or Foe?</h3>
                         <p>Midway through, a mysterious 'friend' joins the game to <span class='text-red-400 font-bold'>steal your score</span>. Outsmart them to stay in the race!</p>
                     </li>
                     <li>
-                        <h3 class='text-yellow-300 font-bold'>LIFE SYSTEM</h3>
+                        <h3 class='text-yellow-300 font-bold glow'>LIFE SYSTEM</h3>
                         <p>Each team starts with <span class='text-red-500'>three lives ❤️❤️❤️</span>. Use lives wisely for hints. If they run out, your team is eliminated!</p>
                     </li>
                     <li>
-                        <h3 class='text-yellow-300 font-bold'>LEVEL-4: The Final Cipher</h3>
+                        <h3 class='text-yellow-300 font-bold glow'>LEVEL-4: The Final Cipher</h3>
                         <p>The ultimate cryptographic challenge awaits. Only the best will crack the final code and emerge victorious!</p>
                     </li>
                 </ul>
