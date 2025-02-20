@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quantico', sans-serif;
+            background: linear-gradient(90deg, #2d01bf 0%, #CB6CE6 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 100px;
+            margin-top: 90px;
+            opacity: 0;
+            transform: translateX(-100%);
+            animation: slideInLeft 0.5s ease-out forwards;
+        }
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            opacity: 0;
+            transform: translateX(100%);
+            animation: slideInRight 0.5s ease-out forwards 1s;
+        }
+        .event-card {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+        .event-card:hover {
+            transform: scale(1.05);
+        }
+        .event-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .event-content {
+            padding: 15px;
+            text-align: center;
+        }
+        .event-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .event-description {
+            font-size: 1rem;
+        }
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Technical Events</h1>
+    <div class="event-grid">
+        <a href="Event_template.html" class="event-card">
+            <div class="event-image" style="background-image: url('hackathon.jpg');"></div>
+            <div class="event-content">
+                <h2 class="event-title">HACKATHON</h2>
+                <p class="event-description">Collaborate and code to solve real-world problems in our intensive hackathon session.</p>
+            </div>
+        </a>
+        <a href="Event_template.html" class="event-card">
+            <div class="event-image" style="background-image: url('truthed_pixels.jpg');"></div>
+            <div class="event-content">
+                <h2 class="event-title">TRUTHED PIXELS</h2>
+                <p class="event-description">Showcase your design skills in our creative pixel art competition.</p>
+            </div>
+        </a>
+        <a href="Event_template.html" class="event-card">
+            <div class="event-image" style="background-image: url('cipher_chase.jpg');"></div>
+            <div class="event-content">
+                <h2 class="event-title">THE CIPHER CHASE</h2>
+                <p class="event-description">Test your cryptography skills in a thrilling code-breaking adventure.</p>
+            </div>
+        </a>
+    </div>
+</body>
+</html>

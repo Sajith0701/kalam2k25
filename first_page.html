@@ -4,144 +4,122 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Landing Page</title>
-    <!-- Link to Tailwind CSS CDN -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <!-- Link to Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      /* Custom Gradient Background */
+      /* Gradient Background */
       .gradient-bg {
         background: linear-gradient(90deg, #2d01bf 0%, #CB6CE6 100%);
       }
-
-      /* Custom Fade-out Effect for Video */
-      .fade-out {
-        animation: fadeOut 3s forwards;
+      /* Glassmorphism Effect for Event Cards */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, background 0.3s ease;
       }
-
-      @keyframes fadeOut {
-        0% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-        }
+      .glass-card:hover {
+        transform: scale(1.05);
+        background: rgba(255, 255, 255, 0.4);
       }
-
-      /* Custom Slide-in Effect for Event Sections (Top-left to Bottom-right) */
-      .slide-in {
-        animation: slideIn 1s forwards;
-      }
-
-      @keyframes slideIn {
-        0% {
-          transform: translate(-100%, -100%);
-          opacity: 0;
-        }
-        100% {
-          transform: translate(0, 0);
-          opacity: 1;
-        }
-      }
-
-      /* Skip Button Style */
+      /* Skip Button Styling */
       .skip-button {
         position: absolute;
-        bottom: 20px; /* Move to bottom */
-        right: 20px; /* Right corner */
-        background-color: rgb(255, 255, 255);
+        bottom: 20px;
+        right: 20px;
+        background: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
-        padding: 10px 20px;
-        border-radius: 5px;
+        padding: 12px 24px;
+        border-radius: 8px;
         font-size: 18px;
+        font-weight: bold;
         cursor: pointer;
-        transition: background-color 0.3s ease;
-        display: none; /* Initially hidden */
+        transition: background 0.3s ease;
       }
-
-      
       .skip-button:hover {
-        background-color: rgba(0, 0, 0, 0.7);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
       }
-
+      /* Burning Effect */
+      .burn-effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at bottom right, rgba(203, 108, 230, 0.1) 20%, rgba(45, 1, 191, 0.9) 80%);
+        opacity: 1;
+        animation: burnAway 2s forwards ease-in-out;
+      }
+      @keyframes burnAway {
+        0% {
+          clip-path: circle(0% at bottom right);
+          opacity: 1;
+        }
+        100% {
+          clip-path: circle(150% at top left);
+          opacity: 0;
+        }
+      }
       /* Hide Content Initially */
       .hidden-content {
-        display: none;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 3s ease-out, transform 3s ease-out;
+      }
+      .visible-content {
+        opacity: 1;
+        transform: translateY(0);
       }
     </style>
   </head>
-  <body class="bg-gray-50 gradient-bg">
-
-    <!-- Main Landing Page Section -->
-    <div class="min-h-screen flex flex-col items-center text-white">
-
-      <!-- Background Video Section -->
+  <body class="gradient-bg text-white">
+    <div class="min-h-screen flex flex-col items-center justify-center">
       <div class="relative w-full h-screen">
         <video id="landing-video" autoplay muted class="absolute top-0 left-0 w-full h-full object-cover">
           <source src="EXYPNOS 2024 (2).mp4" type="video/mp4" />
         </video>
-
-        <!-- Skip Button (Initially Hidden) -->
+        <div id="burn-effect" class="burn-effect hidden"></div>
         <button id="skip-button" class="skip-button">Skip</button>
       </div>
-
-      <!-- Event Sections (Initially Hidden) -->
-      <div id="event-sections" class="py-10 grid grid-cols-1 md:grid-cols-3 gap-6 w-11/12 max-w-5xl hidden-content">
-        <!-- Event Card 1 -->
-        <a href="Event_template.html" class="group relative block overflow-hidden rounded-lg shadow-lg bg-white text-black hover:bg-gray-100 transition-all duration-300">
-          <img src="/event1.jpg" alt="Tech Symposium" class="w-full h-48 object-cover group-hover:scale-105 transition-all duration-300" />
-          <div class="p-4 text-xl font-semibold group-hover:text-purple-600 transition-all duration-300">Tech Symposium</div>
+      <div id="event-sections" class="absolute top-1/2 transform -translate-y-1/2 py-10 grid grid-cols-1 md:grid-cols-3 gap-6 w-11/12 max-w-6xl hidden-content">
+        <a href="tech_events.html" class="glass-card p-6 text-center">
+          <img src="/event1.jpg" alt="Tech Symposium" class="w-full h-48 object-cover rounded-lg" />
+          <div class="mt-4 text-xl font-bold">Tech Symposium</div>
         </a>
-
-        <!-- Event Card 2 -->
-        <a href="/cultural-fest" class="group relative block overflow-hidden rounded-lg shadow-lg bg-white text-black hover:bg-gray-100 transition-all duration-300">
-          <img src="/event2.jpg" alt="Cultural Fest" class="w-full h-48 object-cover group-hover:scale-105 transition-all duration-300" />
-          <div class="p-4 text-xl font-semibold group-hover:text-purple-600 transition-all duration-300">Cultural Fest</div>
+        <a href="/cultural-fest" class="glass-card p-6 text-center">
+          <img src="/event2.jpg" alt="Cultural Fest" class="w-full h-48 object-cover rounded-lg" />
+          <div class="mt-4 text-xl font-bold">Cultural Fest</div>
         </a>
-
-        <!-- Event Card 3 -->
-        <a href="/sports-meet" class="group relative block overflow-hidden rounded-lg shadow-lg bg-white text-black hover:bg-gray-100 transition-all duration-300">
-          <img src="/event3.jpg" alt="Sports Meet" class="w-full h-48 object-cover group-hover:scale-105 transition-all duration-300" />
-          <div class="p-4 text-xl font-semibold group-hover:text-purple-600 transition-all duration-300">Sports Meet</div>
+        <a href="/sports-meet" class="glass-card p-6 text-center">
+          <img src="/event3.jpg" alt="Sports Meet" class="w-full h-48 object-cover rounded-lg" />
+          <div class="mt-4 text-xl font-bold">Sports Meet</div>
         </a>
       </div>
-
     </div>
-
     <script>
-      // Elements
       const video = document.getElementById("landing-video");
+      const burnEffect = document.getElementById("burn-effect");
       const eventSections = document.getElementById("event-sections");
       const skipButton = document.getElementById("skip-button");
-
-      // Function to show the skip button when video starts playing
-      video.onplay = () => {
-        skipButton.style.display = "block"; // Show skip button
-      };
-
-      // Function to skip the video
+      
+      video.onplay = () => skipButton.style.display = "block";
+      
       const skipVideo = () => {
-        // Fade out the video
-        video.classList.add("fade-out");
-
-        // Once the fade-out animation is done, hide the video and reveal the content
-        video.addEventListener("animationend", () => {
-          video.style.display = "none"; // Hide video
-          skipButton.style.display = "none"; // Hide skip button
-          eventSections.classList.remove("hidden-content"); // Show event sections
-          eventSections.classList.add("slide-in"); // Add slide-in animation
-        });
+        burnEffect.classList.remove("hidden");
+        video.style.transition = "opacity 4s ease-in-out";
+        video.style.opacity = "0";
+        
+        setTimeout(() => {
+          video.style.display = "none";
+          skipButton.style.display = "none";
+          eventSections.classList.add("visible-content");
+        }, 4000);
       };
-
-      // Event listener for the skip button
+      
       skipButton.addEventListener("click", skipVideo);
-
-      // Wait for the video to finish before hiding it and showing the content
-      video.onended = () => {
-        skipVideo();
-      };
+      video.onended = skipVideo;
     </script>
-
   </body>
 </html>

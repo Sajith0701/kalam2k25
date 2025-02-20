@@ -6,7 +6,6 @@
     <title>The Cipher Chase - Kalam 2k25</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
     <style>
         .gradient-bg {
             background: linear-gradient(90deg, #2d01bf 0%, #CB6CE6 100%);
@@ -19,82 +18,88 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 2rem;
+        }
         .image-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
-            height: 400px;
-            margin: auto;
+            max-width: 500px;
+            height: 350px;
             overflow: hidden;
             border-radius: 10px;
-            animation: slideIn 1.5s ease-in-out;
+            animation: fadeIn 1.5s ease-in-out;
             background: linear-gradient(to top, rgba(45, 1, 191, 0.8), rgba(203, 108, 230, 0.6)), url("event.jpg");
             background-size: cover;
             background-position: center;
         }
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .image-container::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            transform: scale(1);
-            transition: transform 0.5s ease-in-out;
-        }
-        .image-container:hover::after {
-            transform: scale(1.05);
-        }
         .image-overlay {
             position: absolute;
-            bottom: 10px;
+            bottom: 0;
             left: 0;
             width: 100%;
             text-align: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             padding: 10px;
-            z-index: 2;
-            animation: fadeInUp 1.5s ease-in-out;
+            background: rgba(0, 0, 0, 0.5);
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        h1, h2, p {
+        .event-details {
             animation: fadeIn 2s ease-in-out;
+        }
+        .event-description {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="bg-gray-50 gradient-bg flex items-center justify-center min-h-screen">
-    <div class="flex flex-col md:flex-row items-center md:items-start w-full p-8">
+<body class="gradient-bg text-white flex items-center justify-center min-h-screen p-6">
+    <div class="container flex flex-col md:flex-row items-center gap-12">
         <!-- Event Poster with Overlay -->
-        <div class="md:w-1/2 w-full flex justify-center">
+        <div class="md:w-5/12 w-full flex justify-center">
             <div class="image-container">
-                <div class="image-overlay">
-                    <p>Join us for an exciting cryptography-based event! Solve puzzles, decode challenges, and showcase your skills.</p>
-                </div>
+                <div class="image-overlay">Unleash your inner cryptographer! Solve puzzles, crack codes, and race against time in this thrilling challenge.</div>
             </div>
         </div>
         
         <!-- Event Description -->
-        <div class="md:w-1/2 w-full mt-6 md:mt-0 md:ml-8 text-white">
-            <h1 class="text-3xl font-bold"><span class="text-blue-300 font-semibold">T</span>HE <span class="text-blue-300 font-semibold">C</span>IPHER-<span class="text-blue-300 font-semibold">C</span>HASE</h1>
-            <h2 class="text-xl mt-2">Kalam 2k25</h2>
-            <p class="mt-4 text-lg">
-                Join us for an exciting cryptography-based technical event where participants
-                will decode challenges and solve puzzles to advance through the competition.
-                Sharpen your problem-solving skills and showcase your cryptographic expertise!
-            </p>
-            <p class="mt-4 font-semibold">Date: March 15, 2025</p>
-            <p class="font-semibold">Venue: PROGEN LAB, SIET</p>
-            <p class="mt-4">For more details, contact: <span class="text-blue-300 font-semibold">coordinator@.com</span></p>
+        <div class="md:w-7/12 w-full text-white text-left event-details">
+            <h1 class="text-5xl font-bold text-center md:text-left">The Cipher Chase</h1>
+            <h2 class="text-2xl mt-2 text-center md:text-left">Kalam 2k25</h2>
+            <div class="event-description mt-6">
+                <h2 class="text-3xl font-bold text-center md:text-left">How It Works</h2>
+                <ul class="list-none mt-4 text-lg leading-relaxed space-y-5">
+                    <li>
+                        <h3 class='text-yellow-300 font-bold'>LEVEL-1: Debugging</h3>
+                        <p>Fix three debugging challenges to unlock a hidden Morse code. Decrypt it to advance to the next level.</p>
+                    </li>
+                    <li>
+                        <h3 class='text-yellow-300 font-bold'>LEVEL-2: Race the Clock</h3>
+                        <p>Code in <span class='text-blue-400'>C, Java, Python, or C++</span>, but beware—there’s a unique time twist! Solve fast to get the next key.</p>
+                    </li>
+                    <li>
+                        <h3 class='text-yellow-300 font-bold'>LEVEL-3: Friend or Foe?</h3>
+                        <p>Midway through, a mysterious 'friend' joins the game to <span class='text-red-400 font-bold'>steal your score</span>. Outsmart them to stay in the race!</p>
+                    </li>
+                    <li>
+                        <h3 class='text-yellow-300 font-bold'>LIFE SYSTEM</h3>
+                        <p>Each team starts with <span class='text-red-500'>three lives ❤️❤️❤️</span>. Use lives wisely for hints. If they run out, your team is eliminated!</p>
+                    </li>
+                    <li>
+                        <h3 class='text-yellow-300 font-bold'>LEVEL-4: The Final Cipher</h3>
+                        <p>The ultimate cryptographic challenge awaits. Only the best will crack the final code and emerge victorious!</p>
+                    </li>
+                </ul>
+            </div>
+            <p class="mt-6 font-semibold text-center md:text-left">📅 Date: March 15, 2025</p>
+            <p class="font-semibold text-center md:text-left">📍 Venue: PROGEN LAB, SIET</p>
+            <p class="mt-4 text-center md:text-left">For more details, contact: <span class="text-blue-300 font-semibold">coordinator@kalam2k25.com</span></p>
         </div>
     </div>
 </body>
